@@ -1,5 +1,6 @@
-package com.eventos.api.infra;
+package com.eventos.api.exception;
 
+import com.eventos.api.dto.ExceptionDTO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

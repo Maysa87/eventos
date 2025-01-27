@@ -1,5 +1,6 @@
-package com.eventos.api.domain.product;
+package com.eventos.api.entity;
 
+import com.eventos.api.dto.ProductDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Builder
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -20,7 +22,7 @@ public class Product {
 
     private Boolean active;
 
-    public Product(RequestProduct requestProduct){
+    public Product(ProductDTO requestProduct){
         this.name = requestProduct.name();
         this.price_in_cents = requestProduct.price_in_cents();
         this.active = true;

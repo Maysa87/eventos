@@ -1,60 +1,39 @@
 package com.eventos.api.controllers;
 
-import com.eventos.api.domain.product.Product;
-import com.eventos.api.domain.product.ProductRepository;
-import com.eventos.api.domain.product.RequestProduct;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.eventos.api.entity.Product;
+import com.eventos.api.dto.ProductDTO;
+import com.eventos.api.service.ProductService;
+    import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/product")
+@AllArgsConstructor
 public class ProductController {
-    @Autowired
-    private ProductRepository repository;
+    private final ProductService productService;
+
     @GetMapping
-    public ResponseEntity getAllProducts(){
-        var allProducts = repository.findAllByActiveTrue();
-        return ResponseEntity.ok(allProducts);
+    public ResponseEntity <List<Product>> getAllProducts(){
+        return ResponseEntity.ok(productService.getProducts());
     }
 
     @PostMapping
-    public ResponseEntity registerProduct(@RequestBody @Valid RequestProduct data){
-        Product newProduct = new Product(data);
-        repository.save(newProduct);
-        return ResponseEntity.ok().build();
+    public ResponseEntity <Product> registerProduct(@RequestBody @Valid ProductDTO data){
+        return ResponseEntity.ok(productService.save(data));
     }
 
     @PutMapping
-    @Transactional
-    public ResponseEntity updateProduct(@RequestBody @Valid RequestProduct data){
-        Optional<Product> optionalProduct = repository.findById(data.id());
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            product.setName(data.name());
-            product.setPrice_in_cents(data.price_in_cents());
-            return ResponseEntity.ok(product);
-        } else {
-            throw new EntityNotFoundException();
-        }
+    public ResponseEntity<Product>  updateProduct(@RequestBody @Valid ProductDTO data){
+            return ResponseEntity.ok(productService.update(data));
     }
 
     @DeleteMapping("/{id}")
-    @Transactional
-    public ResponseEntity deleteProduct(@PathVariable String id){
-        Optional<Product> optionalProduct = repository.findById(id);
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            product.setActive(false);
-            return ResponseEntity.noContent().build();
-        } else {
-            throw new EntityNotFoundException();
-        }
+    public ResponseEntity<Void> deleteProduct(@PathVariable String id){
+        productService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
