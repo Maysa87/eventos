@@ -1,11 +1,9 @@
-package com.eventos.api.domain.product;
+package com.eventos.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.UUID;
-
-public record RequestProduct(
+public record ProductDTO(
         String id,
 
         @NotBlank

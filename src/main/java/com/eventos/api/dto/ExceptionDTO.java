@@ -1,4 +1,4 @@
-package com.eventos.api.infra;
+package com.eventos.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
