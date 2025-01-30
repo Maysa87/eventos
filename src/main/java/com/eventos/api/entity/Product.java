@@ -1,6 +1,5 @@
 package com.eventos.api.entity;
 
-import com.eventos.api.dto.ProductDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,13 +17,40 @@ public class Product {
 
     private String name;
 
-    private Integer price_in_cents;
+    @Column(name = "price_in_cents")
+    private Integer priceInCents;
 
     private Boolean active;
 
-    public Product(ProductDTO requestProduct){
-        this.name = requestProduct.name();
-        this.price_in_cents = requestProduct.price_in_cents();
-        this.active = true;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPriceInCents() {
+        return priceInCents;
+    }
+
+    public void setPriceInCents(Integer priceInCents) {
+        this.priceInCents = priceInCents;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

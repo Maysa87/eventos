@@ -1,14 +1,37 @@
 package com.eventos.api.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-public record ProductDTO(
-        String id,
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class ProductDTO {
+    private String id;
+    private String name;
+    private Integer priceInCents;
 
-        @NotBlank
-        String name,
-        @NotNull
-        Integer price_in_cents
-) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPriceInCents() {
+        return priceInCents;
+    }
+
+    public void setPriceInCents(Integer priceInCents) {
+        this.priceInCents = priceInCents;
+    }
 }
