@@ -4,8 +4,6 @@ import com.eventos.api.dto.ProductDTO;
 import com.eventos.api.entity.Product;
 import com.eventos.api.mapper.ProductMapper;
 import com.eventos.api.repository.ProductRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
