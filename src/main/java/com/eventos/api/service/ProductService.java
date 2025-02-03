@@ -1,11 +1,10 @@
 package com.eventos.api.service;
 
 import com.eventos.api.dto.ProductDTO;
+import com.eventos.api.dto.ProductProjection;
 import com.eventos.api.entity.Product;
 import com.eventos.api.mapper.ProductMapper;
 import com.eventos.api.repository.ProductRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +23,19 @@ public class ProductService {
 
     @Transactional
     public List<ProductDTO> getProducts(){
-        return productMapper.entitiesToDtos(repository.findAllByActiveTrue());
+            return productMapper.entitiesToDtos(repository.encontrarAtivos(true));
+    }
+    @Transactional
+    public List<ProductDTO> getProductsGreaterThan(Integer valor){
+        return productMapper.entitiesToDtos(repository.findByPriceInCentsGreaterThanEqual(valor));
+    }
+    @Transactional
+    public List<ProductDTO> getProductsLessThan(Integer valor){
+        return productMapper.entitiesToDtos(repository.findProductsLess(valor));
+    }
+    @Transactional
+    public List<ProductProjection> getProductsNames(){
+        return repository.findActivesProjection(true);
     }
     @Transactional
     public ProductDTO save (ProductDTO productDto){

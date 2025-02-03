@@ -1,6 +1,7 @@
 package com.eventos.api.controllers;
 
 import com.eventos.api.dto.ProductDTO;
+import com.eventos.api.dto.ProductProjection;
 import com.eventos.api.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-
 public class ProductController {
 
     private final ProductService productService;
@@ -19,8 +19,20 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity <List<ProductDTO>> getAllProducts(){;
+    public ResponseEntity <List<ProductDTO>> getAllProducts(){
         return ResponseEntity.ok(productService.getProducts());
+    }
+    @GetMapping("/greater/{valor}")
+    public ResponseEntity <List<ProductDTO>> getAllProductsGreaterThan(@PathVariable Integer valor){
+        return ResponseEntity.ok(productService.getProductsGreaterThan(valor));
+    }
+    @GetMapping("/less")
+    public ResponseEntity <List<ProductDTO>> asdf(@RequestParam(required = true) Integer valor){
+        return ResponseEntity.ok(productService.getProductsLessThan(valor));
+    }
+    @GetMapping("/names")
+    public ResponseEntity <List<ProductProjection>> getAllProductsNames(){
+        return ResponseEntity.ok(productService.getProductsNames());
     }
 
     @PostMapping
