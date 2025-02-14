@@ -3,26 +3,28 @@ package com.eventos.api.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name="product")
-@Entity(name="product")
+import java.time.LocalDate;
+
+@Entity(name = "pessoas")
+@Table(name = "pessoas")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
-public class Product {
+public class PessoaEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+
     private String id;
     private String name;
-    @Column(name = "price_in_cents")
-    private Integer priceInCents;
+    private LocalDate age;
+    private String email;
     private Boolean active;
 
-    public String getId() {
-        return id;
-    }
+    public String getId() { return id;}
 
     public void setId(String id) {
         this.id = id;
@@ -36,13 +38,15 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getPriceInCents() {
-        return priceInCents;
+    public LocalDate getAge() { return age;}
+
+    public void setAge(LocalDate age) { this.age = age;}
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setPriceInCents(Integer priceInCents) {
-        this.priceInCents = priceInCents;
-    }
+    public void setEmail(String email) { this.email = email;}
 
     public Boolean getActive() {
         return active;
@@ -52,3 +56,4 @@ public class Product {
         this.active = active;
     }
 }
+

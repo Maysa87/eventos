@@ -22,6 +22,8 @@ public class ProductController {
     public ResponseEntity <List<ProductDTO>> getAllProducts(){
         return ResponseEntity.ok(productService.getProducts());
     }
+
+
     @GetMapping("/greater/{valor}")
     public ResponseEntity <List<ProductDTO>> getAllProductsGreaterThan(@PathVariable Integer valor){
         return ResponseEntity.ok(productService.getProductsGreaterThan(valor));
@@ -35,6 +37,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductsNames());
     }
 
+
     @PostMapping
     public ResponseEntity<ProductDTO> registerProduct(@RequestBody @Valid ProductDTO data){
         return ResponseEntity.ok(productService.save(data));
@@ -44,7 +47,6 @@ public class ProductController {
     public ResponseEntity<ProductDTO>  updateProduct(@RequestBody @Valid ProductDTO data){
                 return ResponseEntity.ok(productService.update(data));
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable String id){
         productService.delete(id);
