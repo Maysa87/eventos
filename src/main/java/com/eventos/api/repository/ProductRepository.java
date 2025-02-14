@@ -13,9 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, String> {
 
    List<Product> findAllByActiveTrue();
 
-   @Query("""
-       SELECT product from com.eventos.api.entity.Product product where product.active = :active
-       """)
+   @Query("SELECT product from com.eventos.api.entity.Product product where product.active = :active")
    List<Product> encontrarProdutosAtivosOuNao(Boolean active);
    
 

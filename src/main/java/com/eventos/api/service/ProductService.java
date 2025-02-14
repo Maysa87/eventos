@@ -37,6 +37,8 @@ public class ProductService {
     public List<ProductProjection> getProductsNames(){
         return repository.findActivesProjection(true);
     }
+
+
     @Transactional
     public ProductDTO save (ProductDTO productDto){
         Product newProduct =  productMapper.dtoToEntity(productDto);
