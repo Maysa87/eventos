@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class DataController {
 
-	// ijetar service
+	// injetar service
 
 	@GetMapping("/date")
 	public String getCurrentDate() {

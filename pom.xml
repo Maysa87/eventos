@@ -12,8 +12,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.eventos</groupId>
-    <artifactId>api</artifactId>
+     <artifactId>api</artifactId>
     <version>1.1.0</version>
     <name>api</name>
     <description>Project Backend Spring Boot for events</description>
@@ -86,7 +85,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spring Cloud OpenFeign (versão gerenciada pelo BOM) -->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
