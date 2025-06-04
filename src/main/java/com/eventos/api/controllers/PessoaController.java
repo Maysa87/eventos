@@ -19,6 +19,7 @@ public class PessoaController {
 
     @GetMapping
     public ResponseEntity<List<PessoaDto>> getAllPessoas(){
+
         return ResponseEntity.ok(pessoaService.getPessoas());
     }
     @PostMapping
