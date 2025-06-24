@@ -1,5 +1,5 @@
-# eventos
-Projeto CRUD usando Java Spring 
+# Eventos
+Projeto API Rest usando Java Spring integrado ao microservice Data 
 
 ## Usage
 1. Start the application with Maven
