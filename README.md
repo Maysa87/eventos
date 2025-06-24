@@ -1,5 +1,5 @@
 # Eventos
-Projeto API Rest usando Java Spring integrado ao microservice Data 
+Projeto API Rest usando Java Spring integrado ao microservice Date 
 
 ## Usage
 1. Start the application with Maven
